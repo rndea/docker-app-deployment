@@ -2,16 +2,15 @@
 
 set -e
 
+APP_VERSION=${1:-latest}
+
 echo "=== Updating source code ==="
 cd src
 git pull
 
-echo "=== Building Docker image ==="
-cd ..
-docker compose build
-
 echo "=== Starting Application ==="
-docker compose up -d
+cd ..
+APP_VERSION=$APP_VERSION docker compose up -d
 
 echo "=== Health Check ==="
 curl --fail http://localhost:8087

@@ -1,6 +1,6 @@
 services:
   app:
-    build: .
+    image: docker-app-deployment-app:${APP_VERSION:-latest}
     container_name: docker-app-deployment
     ports:
       - "8087:8080"
