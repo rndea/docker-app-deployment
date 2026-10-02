@@ -18,5 +18,10 @@ for i in {1..10}; do
 	sleep 2
 done
 
+if [ "$HEALTHY" = false ]; then
+	echo "Health check failed!"
+	exit1
+fi
+
 echo "=== Deployment completed ==="
 docker compose ps
